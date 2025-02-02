@@ -10,4 +10,6 @@ import uasz.sn.gestion_enseignement.Authentification.model.Utilisateur;
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
     @Query("SELECT u FROM Utilisateur u WHERE u.username = :username")
     Utilisateur findByUsername(@Param("username") String username);
+
+
 }

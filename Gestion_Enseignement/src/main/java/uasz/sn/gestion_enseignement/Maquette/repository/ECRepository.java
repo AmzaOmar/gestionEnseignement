@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ECRepository extends JpaRepository<EC, Long> {
     List<EC> findByUe(UE ue);
+    List<EC> findByUeMaquetteId(Long id);
 }

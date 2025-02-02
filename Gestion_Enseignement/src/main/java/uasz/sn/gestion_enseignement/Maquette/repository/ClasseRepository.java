@@ -14,5 +14,6 @@ import java.util.List;
 @Repository
 public interface ClasseRepository extends JpaRepository<Classe,Long> {
     List<Classe> findByFormation(Formation formation);
+    Classe findByNiveau(String niveau);
 
 }

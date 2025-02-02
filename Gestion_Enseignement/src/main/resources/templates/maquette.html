@@ -38,6 +38,9 @@
                     <li>
                         <a th:href="@{/ChefDepartement/Formation}"><span>Formations</span></a>
                     </li>
+                    <li>
+                        <a th:href="@{/ChefDepartement/Maquette}"><span>Maquette</span></a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -94,14 +97,7 @@
                                         <label >Année</label>
                                         <input type="text" class="form-control" name="annee" placeholder="Année"/>
                                     </div>
-                                    <div class="form-group">
-                                        <label >Nombre credit total</label>
-                                        <input type="text" class="form-control" name="nbCreditsTotal"  placeholder="Nombre credit total" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label >Nombre d'heures Total</label>
-                                        <input type="text" class="form-control" name="nbHeuresTotal"  placeholder="Nombre heures total" />
-                                    </div>
+
                                     <div class="form-group">
                                         <label >Nombre de UE</label>
                                         <input type="text" class="form-control" name="nbUEs" placeholder="Nbre UE" />
@@ -183,17 +179,14 @@
                                                     <input type="text" class="form-control" name="code" th:value="${maquette.code}"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label >Libelle</label>
-                                                    <input type="text" class="form-control" name="libelle" th:value="${maquette.nbCreditsTotal}"/>
+                                                    <label >Annee</label>
+                                                    <input type="text" class="form-control" name="libelle" th:value="${maquette.annee}"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label >Crédit</label>
+                                                    <label >Nombre UE</label>
                                                     <input type="text" class="form-control" name="credit" th:value="${maquette.nbUEs}"/>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label >Coefficient</label>
-                                                    <input type="text" class="form-control" name="coefficient" th:value="${maquette.nbHeuresTotal}"/>
-                                                </div>
+
                                             </div>
                                             <!--modal Footer-->
                                             <div class="modal-footer" >

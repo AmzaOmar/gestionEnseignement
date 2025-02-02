@@ -34,6 +34,14 @@ public class UEController {
         Long Id = Long.parseLong(id);
         Maquette maquette=maquetteService.findById(Id);
         List<UE> ues = maquette.getUes();
+        int c=0;
+        for(UE ue:ues){
+            for(EC ec: ue.getEcs()){
+                c=c+ec.getVht();
+            }
+        }
+        maquette.setNbHeuresTotal(c);
+        maquetteService.updateMaquette(maquette);
         model.addAttribute("maquette", maquette);
         model.addAttribute("ues", ueService.findUEByMaquette(maquette));
         model.addAttribute("nom", user.getNom());
@@ -45,6 +53,9 @@ public class UEController {
     public String modifierUE(@PathVariable("maquetteid") String id, UE ue) {
         Long Id = Long.parseLong(id);
         Maquette maquette=maquetteService.findById(Id);
+        UE ue1=ueService.findById(Id);
+
+        maquette.setNbCreditsTotal(maquette.getNbCreditsTotal()- ue1.getCredit()+ ue.getCredit());
         ueService.updateUE(ue);
         List<UE> ues = maquette.getUes();
         ues.removeIf(e -> Objects.equals(e.getId(), ue.getId()));
@@ -58,6 +69,7 @@ public class UEController {
     public String supprimerUE(@PathVariable("maquetteid") String id, UE ue) {
         Long Id = Long.parseLong(id);
         Maquette maquette=maquetteService.findById(Id);
+        maquette.setNbCreditsTotal(maquette.getNbCreditsTotal()-ue.getCredit());
         ueService.deleteUE(ue.getId());
         List<UE> ues = maquette.getUes();
         ues.removeIf(e -> Objects.equals(e.getId(), ue.getId()));
@@ -71,7 +83,7 @@ public class UEController {
         Long Id = Long.parseLong(id);
         Maquette maquette=maquetteService.findById(Id);
         ue.setMaquette(maquette);
-
+        maquette.setNbCreditsTotal(maquette.getNbCreditsTotal()+ue.getCredit());
         ueService.addUE(ue);
         List<UE> ues =maquette.getUes();
         ues.add(ue);

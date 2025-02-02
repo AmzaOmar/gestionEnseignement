@@ -38,6 +38,9 @@
                     <li>
                         <a th:href="@{/ChefDepartement/Formation}"><span>Formations</span></a>
                     </li>
+                    <li>
+                        <a th:href="@{/ChefDepartement/Maquette}"><span>Maquette</span></a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -90,9 +93,16 @@
                                         <input type="text" class="form-control" name="code"  placeholder="Code" />
                                     </div>
                                     <div class="form-group">
-                                        <label >Nom</label>
-                                        <input type="text" class="form-control" name="nom"  placeholder="Nom" />
+                                        <label>Niveau</label>
+                                        <select class="form-control" name="niveau">
+                                            <option value="L1">L1</option>
+                                            <option value="L2">L2</option>
+                                            <option value="L3">L3</option>
+                                            <option value="M1">M1</option>
+                                            <option value="M2">M2</option>
+                                        </select>
                                     </div>
+
 
                                 </div>
                                 <!--modal Footer-->
@@ -119,7 +129,7 @@
                     <thead>
                     <tr>
                         <th>Code</th>
-                        <th>Nom</th>
+                        <th>Niveau</th>
 
                         <th>Opérations</th>
                         <th>Détails</th>
@@ -128,7 +138,7 @@
                     <tbody>
                     <tr th:each="classe:${classes}">
                         <td th:text="${classe.code}"></td>
-                        <td th:text="${classe.nom}"></td>
+                        <td th:text="${classe.niveau}"></td>
 
                         <td>
                             <button class="btn btn-info btn-xs" data-toggle="modal" th:attr="data-target='#form_Modifier_Classe'+${classe.id}">
@@ -163,9 +173,16 @@
                                                     <input type="text" class="form-control" name="code" th:value="${classe.code}"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label >Nom</label>
-                                                    <input type="text" class="form-control" name="Nom" th:value="${classe.nom}"/>
+                                                    <label>Niveau</label>
+                                                    <select class="form-control" name="niveau">
+                                                        <option value="L1" th:selected="${classe.niveau == 'L1'}">L1</option>
+                                                        <option value="L2" th:selected="${classe.niveau == 'L2'}">L2</option>
+                                                        <option value="L3" th:selected="${classe.niveau == 'L3'}">L3</option>
+                                                        <option value="M1" th:selected="${classe.niveau == 'M1'}">M1</option>
+                                                        <option value="M2" th:selected="${classe.niveau == 'M2'}">M2</option>
+                                                    </select>
                                                 </div>
+
 
                                             </div>
                                             <!--modal Footer-->
@@ -207,8 +224,8 @@
                                                     <span th:text="${classe.code}"/></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nom</label> :
-                                                    <span th:text="${classe.nom}"/></span>
+                                                    <label>Niveau</label> :
+                                                    <span th:text="${classe.niveau}"/></span>
                                                 </div>
 
                                             </div>

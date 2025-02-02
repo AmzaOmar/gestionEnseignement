@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -15,6 +16,7 @@ public class EC {
     private Long id;
     private String libelle, code, description;
     private int cm, tp, td, hTotal, tpe, vht, coefficient;
+    @ToString.Exclude
     @ManyToOne
     private UE ue;
     @ManyToOne

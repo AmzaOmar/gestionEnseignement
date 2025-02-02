@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -20,13 +21,14 @@ public class Maquette {
     private String code;
     private String intitule;
     private int annee;
-    private String semestre;
+
     private int nbCreditsTotal;
     private int nbUEs;
     private int nbHeuresTotal;
     private String description;
 
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "maquette",fetch = FetchType.EAGER)
     private List<UE> ues;
 

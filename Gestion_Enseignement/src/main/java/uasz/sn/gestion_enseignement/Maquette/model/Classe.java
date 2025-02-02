@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -16,9 +17,9 @@ public class Classe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
-    private String nom;
+    private String niveau;
 
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "classe",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
     private Maquette maquette;
 
